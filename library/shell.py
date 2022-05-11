@@ -1,9 +1,11 @@
 # shell.py
 
 import secrets
+from zoneinfo import available_timezones
 
 dish = ''
 recipe_amount = 10
+available_commands = ['help', 'vegan', 'details', 'ingredients', 'quit']
 
 def get_vegan(number):
     return ''.join(['Vegan dish generated: ', str(number)])
@@ -23,6 +25,9 @@ while 1:
     elif x == 'vegan':
         dish = get_vegan(secrets.randbelow(recipe_amount))
         print(dish)
+
+    elif x == 'help':
+        print(available_commands)
     
     else:
         print('Unknown command')
