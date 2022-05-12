@@ -1,5 +1,6 @@
 # shell.py
 
+from recipelist import *
 import secrets
 from zoneinfo import available_timezones
 
@@ -24,6 +25,7 @@ while 1:
 
     elif x == 'vegan':
         dish = get_vegan(secrets.randbelow(recipe_amount))
+        load_dishfile()
         print(dish)
 
     elif x == 'help':
