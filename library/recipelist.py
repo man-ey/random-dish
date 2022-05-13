@@ -22,3 +22,10 @@ def amount_dishes():
 def get_dish(position):
     load_dishfile()
     return dishes[position]
+
+def add_dish(toAdd):
+    dish = toAdd.split(',')
+    with open('library/dishes.csv', 'a+', newline='') as writeobj:
+        csv_writer = csv.writer(writeobj)
+        csv_writer.writerow(dish)
+        writeobj.close()
