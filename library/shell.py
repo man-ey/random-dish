@@ -2,14 +2,15 @@
 
 from recipelist import *
 import secrets
-from zoneinfo import available_timezones
 
 dish = ''
-recipe_amount = 10
 available_commands = ['help', 'vegan', 'details', 'ingredients', 'quit']
 
-def get_vegan(number):
-    return ''.join(['Vegan dish generated: ', str(number)])
+def get_vegan(generated):
+    return get_dish(generated)
+
+def get_ingredients():
+    return dish[1:len(dish)]
 
 while 1:
     x = input('> ')
@@ -21,12 +22,11 @@ while 1:
         if dish == '':
             print('Request a dish first')
         else:
-            print('details here')
+            print(get_ingredients())
 
     elif x == 'vegan':
-        dish = get_vegan(secrets.randbelow(recipe_amount))
-        load_dishfile()
-        print(dish)
+        dish = get_vegan(secrets.randbelow(amount_dishes()))
+        print(dish[0])
 
     elif x == 'help':
         print(available_commands)
