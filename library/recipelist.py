@@ -29,3 +29,15 @@ def add_dish(toAdd, category):
         csv_writer = csv.writer(writeobj)
         csv_writer.writerow(dish)
         writeobj.close()
+
+def bookmark_dish(toAdd):
+    load_dishfile('favourite')
+    if toAdd in dishes:
+        print('Dish already bookmarked')
+        return  
+    
+    else:
+        with open('library/dishlibrary/favourite_dishes.csv', 'a+', newline='') as writeobj:
+            csv_writer = csv.writer(writeobj)
+            csv_writer.writerow(toAdd)
+            writeobj.close()
